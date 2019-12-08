@@ -14,7 +14,7 @@ const Friend = (props) => {
     .catch(err => {
       console.log(err)
     })
-  },[])
+  },[props.match.url])
 
   return (
     <div>

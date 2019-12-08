@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
-import { axiosWithAuth } from '../utils/axiosWithAuth'
+import React from 'react'
+// import { axiosWithAuth } from '../utils/axiosWithAuth'
 import { Link } from 'react-router-dom'
 
 import '../App.css'
 
 const Item = (props) => {
   // console.log(props)
-  const [friend, setFriend] = useState({})
+  // const [friend, setFriend] = useState({})
 
   // useEffect(() => {
   //   axiosWithAuth().get(`/friends/${}`)
@@ -19,10 +19,10 @@ const Item = (props) => {
   //   })
   // },[])
 
-  const handleFriend = (friendId) => {
-    console.log(friendId)
-    setFriend()
-  }
+  // const handleFriend = (friendId) => {
+  //   console.log(friendId)
+
+  // }
 
   return (
     <div className="item">

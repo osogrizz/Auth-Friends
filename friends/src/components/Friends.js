@@ -26,6 +26,14 @@ const Friends = () => {
           <Item key={friend.id} friend={friend} />
         ))}
       </div>
+
+      <form action="">
+        <h2>Add New Friend</h2>
+        <input type="text" name="name" placeholder="name"/>
+        <input type="text" name="age"  placeholder="age" />
+        <input type="email" name="email" placeholder="email" />
+        <button>Add Friend</button>
+      </form>
     </div>
   )
 }

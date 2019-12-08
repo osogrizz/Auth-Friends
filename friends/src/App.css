@@ -20,13 +20,15 @@ a {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  width: 900px;
+  width: 1120px;
   margin: 0 auto;
 }
 
 .item {
   width: 300px;
   margin: 20px 0;
+  border: 1px solid gray;
+  padding: 20px 5px;
 }
 
 .App-logo {
