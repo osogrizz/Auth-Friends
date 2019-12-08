@@ -6,7 +6,12 @@ import '../App.css';
 
 const Friends = () => {
   const [friends, setFriends] = useState([])
-
+  const [newFriend, setNewFriend] = useState({
+    name: '',
+    age: '',
+    email: ''
+  })
+ 
   useEffect(() => {
     axiosWithAuth().get('/friends')
     .then(res => {
@@ -20,6 +25,21 @@ const Friends = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    console.log(newFriend)
+    axiosWithAuth().post('/friends', newFriend)
+    .then(res => {
+      console.log(res)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+
+  const handleChange = (e) => {
+    setNewFriend({
+      ...newFriend,
+      [e.target.name]: e.target.value
+    })
   }
 
   return (
@@ -33,9 +53,30 @@ const Friends = () => {
 
       <form onSubmit={handleSubmit} className="forms">
         <h2>Add New Friend</h2>
-        <input type="text" name="name" placeholder="name"/>
-        <input type="text" name="age"  placeholder="age" />
-        <input type="email" name="email" placeholder="email" />
+        <input 
+          type="text" 
+          name="name" 
+          placeholder="name" 
+          value={newFriend.name} 
+          onChange={handleChange}
+          />
+
+        <input 
+          type="text" 
+          name="age"  
+          placeholder="age" 
+          value={newFriend.age} 
+          onChange={handleChange}
+          />
+
+        <input 
+          type="email" 
+          name="email" 
+          placeholder="email" 
+          value={newFriend.email} 
+          onChange={handleChange}
+        />
+
         <button className="Btn">Add Friend</button>
       </form>
     </div>
