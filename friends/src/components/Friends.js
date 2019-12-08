@@ -31,7 +31,7 @@ const Friends = () => {
         ))}
       </div>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="forms">
         <h2>Add New Friend</h2>
         <input type="text" name="name" placeholder="name"/>
         <input type="text" name="age"  placeholder="age" />
