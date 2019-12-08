@@ -29,6 +29,11 @@ const Friends = () => {
     axiosWithAuth().post('/friends', newFriend)
     .then(res => {
       console.log(res)
+      setNewFriend({
+        name: '',
+        age: '',
+        email: ''
+      })
     })
     .catch(err => {
       console.log(err)

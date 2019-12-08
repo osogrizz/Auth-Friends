@@ -1,36 +1,34 @@
 import React from 'react'
-// import { axiosWithAuth } from '../utils/axiosWithAuth'
+import { axiosWithAuth } from '../utils/axiosWithAuth'
 import { Link } from 'react-router-dom'
 
 import '../App.css'
 
 const Item = (props) => {
   // console.log(props)
-  // const [friend, setFriend] = useState({})
-
-  // useEffect(() => {
-  //   axiosWithAuth().get(`/friends/${}`)
-  //   .then(res => {
-  //     console.log(res.data)
-  //     setFriends(res.data)
-  //   })
-  //   .catch(err => {
-  //     console.log(err)
-  //   })
-  // },[])
-
-  // const handleFriend = (friendId) => {
-  //   console.log(friendId)
-
-  // }
 
   const handleDelete =(friendId) => {
     console.log(friendId)
+    axiosWithAuth().delete(`/friends/${friendId}`, )
+    .then(res => {
+      console.log(res)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+
+  const handleEdit = (friendId) => {
+    console.log(friendId)
+
   }
 
   return (
     <div className="item">
-      <button onClick={() => handleDelete(props.friend.id)}>X</button>
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <button onClick={() => handleEdit(props.friend.id)} >Edit</button>
+        <button onClick={() => handleDelete(props.friend.id)}>X</button>
+      </div>
       <h2>{props.friend.name}</h2>  
       <p>age: {props.friend.age}</p>
       <p>email: {props.friend.email}</p>
