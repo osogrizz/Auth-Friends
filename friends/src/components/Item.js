@@ -5,17 +5,20 @@ import { Link } from 'react-router-dom'
 import '../App.css'
 
 const Item = (props) => {
-  // console.log(props)
+  console.log(props)
 
   const handleDelete =(friendId) => {
     console.log(friendId)
     axiosWithAuth().delete(`/friends/${friendId}`, )
     .then(res => {
       console.log(res)
+      props.setFriends(res.data)
     })
+
     .catch(err => {
       console.log(err)
     })
+
   }
 
   const handleEdit = (friendId) => {

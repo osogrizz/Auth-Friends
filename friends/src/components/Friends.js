@@ -21,7 +21,7 @@ const Friends = () => {
     .catch(err => {
       console.log(err)
     })
-  },[newFriend])
+  },[newFriend, ])
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -52,7 +52,7 @@ const Friends = () => {
       <h1>Friends</h1>
       <div className="friends">
         {friends.map( friend => (
-          <Item key={friend.id} friend={friend} />
+          <Item key={friend.id} friend={friend} setFriends={setFriends} />
         ))}
       </div>
 
