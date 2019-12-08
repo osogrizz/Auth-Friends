@@ -18,6 +18,10 @@ const Friends = () => {
     })
   },[])
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+  }
+
   return (
     <div>
       <h1>Friends</h1>
@@ -27,12 +31,12 @@ const Friends = () => {
         ))}
       </div>
 
-      <form action="">
+      <form onSubmit={handleSubmit}>
         <h2>Add New Friend</h2>
         <input type="text" name="name" placeholder="name"/>
         <input type="text" name="age"  placeholder="age" />
         <input type="email" name="email" placeholder="email" />
-        <button>Add Friend</button>
+        <button className="Btn">Add Friend</button>
       </form>
     </div>
   )
