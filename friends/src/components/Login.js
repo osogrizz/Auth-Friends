@@ -19,10 +19,11 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     axios 
-    .post('http://localhost:5000/api', credentials)
+    .post('http://localhost:5000/api/login', credentials)
     .then( res => {
-      console.log(res)
-      localStorage.setItem('token', res)
+      console.log(res.data)
+      localStorage.setItem('token', res.data.payload)
+      this.props.history.push('/friends')
     })
     .catch(err => {
       console.log('error', err.message)
