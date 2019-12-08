@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 import { Link } from 'react-router-dom'
 
 import '../App.css'
+import Friends from './Friends'
 
 const Item = (props) => {
-  console.log(props)
+  const [isEditing, setIsEditing] = useState(false)
 
   const handleDelete =(friendId) => {
     console.log(friendId)
@@ -14,16 +15,19 @@ const Item = (props) => {
       console.log(res)
       props.setFriends(res.data)
     })
-
     .catch(err => {
       console.log(err)
     })
-
   }
 
   const handleEdit = (friendId) => {
     console.log(friendId)
+    setIsEditing(!isEditing)
+    // props.setFriends(
+    //   ...Friends.map( friend => {
 
+    //   })
+    // )
   }
 
   return (
@@ -36,6 +40,14 @@ const Item = (props) => {
       <p>age: {props.friend.age}</p>
       <p>email: {props.friend.email}</p>
       <Link to={`friends/${props.friend.id}`} >Visit</Link>
+
+      {isEditing && (
+        <form>
+          <input type="text" name="name" />
+          <input type="text" name="age" />
+          <input type="email" name="email" />
+        </form>  
+      )}
     </div>
   )
 }
