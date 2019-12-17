@@ -1,24 +1,26 @@
 import React, { useState } from 'react'
-import axios from 'axios'
+// import axios from 'axios'
+import { axiosWithAuth } from '../utils/axiosWithAuth'
 
-const Login = () => {
+
+const Login = (props) => {
   const [credentials, setCredentials] = useState({
-      username: '',
-      password: ''
+      // username: '',
+      // password: ''
   })
 
   const handleChange = (e) => {
-    setCredentials({
+    setCredentials: {
       ...credentials,
         [e.target.name]: e.target.value
-    })
+    )
 
   }
 
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    axios 
+    axiosWithAuth() 
     .post('http://localhost:5000/api/login', credentials)
     .then( res => {
       console.log(res.data)
@@ -37,7 +39,7 @@ const Login = () => {
           type="text" 
           name="username" 
           placeholder="username" 
-          onChange={handleChange} 
+          onChange={this.handleChange} 
           value={credentials.username}
         />
 
@@ -45,7 +47,7 @@ const Login = () => {
           type="password" 
           name="password" 
           placeholder="password" 
-          onChange={handleChange} 
+          onChange={this.handleChange} 
           value={credentials.password} 
         />
         <button>Log In</button>

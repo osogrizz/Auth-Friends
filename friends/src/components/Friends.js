@@ -21,7 +21,7 @@ const Friends = () => {
     .catch(err => {
       console.log(err)
     })
-  },[newFriend, ])
+  },[newFriend ])
 
   const handleSubmit = (e) => {
     e.preventDefault()
