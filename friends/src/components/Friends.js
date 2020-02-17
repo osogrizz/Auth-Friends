@@ -5,7 +5,8 @@ import Item from './Item'
 import '../App.css';
 
 const Friends = (props) => {
-  console.log('props', props)
+
+  const [isLoggingIn, setLoggingIn] = useState(true)
   const [friends, setFriends] = useState([])
   const [newFriend, setNewFriend] = useState({
     name: '',
@@ -18,6 +19,7 @@ const Friends = (props) => {
     .then(res => {
       console.log(res.data)
       setFriends(res.data)
+      setLoggingIn(false)
     })
     .catch(err => {
       console.log(err)
@@ -52,9 +54,11 @@ const Friends = (props) => {
     <div>
       <h1>Friends</h1>
       <div className="friends">
-        {friends.map( friend => (
+        {isLoggingIn ? (
+          <h1>loading...</h1>
+        ) : (friends.map( friend => (
           <Item key={friend.id} friend={friend} setFriends={setFriends} />
-        ))}
+        )))}
       </div>
 
       <form onSubmit={handleSubmit} className="forms">
