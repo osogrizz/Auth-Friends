@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 import Item from './Item'
+import Spinner from '../components/Spinner'
 
 import '../App.css';
 
@@ -54,14 +55,17 @@ const Friends = (props) => {
     <div>
       <h1>Friends</h1>
       <div className="friends">
+        
+        
         {isLoggingIn ? (
-          <h1>loading...</h1>
-        ) : (friends.map( friend => (
-          <Item key={friend.id} friend={friend} setFriends={setFriends} />
-        )))}
-      </div>
+          <Spinner />
+        ) : 
+          (friends.map( friend => (
+            <Item key={friend.id} friend={friend} setFriends={setFriends} />
+          )))}
+        </div>
 
-      <form onSubmit={handleSubmit} className="forms">
+<form onSubmit={handleSubmit} className="forms">
         <h2>Add New Friend</h2>
         <input 
           type="text" 
@@ -85,7 +89,7 @@ const Friends = (props) => {
           placeholder="email" 
           value={newFriend.email} 
           onChange={handleChange}
-        />
+          />
 
         <button className="Btn">Add Friend</button>
       </form>
