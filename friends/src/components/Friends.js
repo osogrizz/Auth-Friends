@@ -4,7 +4,8 @@ import Item from './Item'
 
 import '../App.css';
 
-const Friends = () => {
+const Friends = (props) => {
+  console.log('props', props)
   const [friends, setFriends] = useState([])
   const [newFriend, setNewFriend] = useState({
     name: '',
@@ -21,7 +22,7 @@ const Friends = () => {
     .catch(err => {
       console.log(err)
     })
-  },[newFriend ])
+  },[newFriend])
 
   const handleSubmit = (e) => {
     e.preventDefault()
